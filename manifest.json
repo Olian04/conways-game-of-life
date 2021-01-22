@@ -1,0 +1,17 @@
+{
+  "short_name": "Game of Life",
+  "name": "Conway's Game of Life by Olian04",
+  "description": "As a rite of passage, everyone eventually implements conway's game of life.",
+  "display": "standalone",
+  "orientation": "portrait",
+  "start_url": "index.html",
+  "theme_color": "#171717",
+  "background_color": "#171717",
+  "icons": [
+      {
+        "src": "/conways-game-of-life/icon-384.png",
+        "sizes": "384x384",
+        "type": "image/png"
+      }
+    ]
+  }
