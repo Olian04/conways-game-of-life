@@ -55,20 +55,18 @@ document.body.addEventListener('mousedown', startDrag);
 document.body.addEventListener('mouseup', stopDrag);
 document.body.addEventListener('mouseleave', stopDrag);
 document.body.addEventListener('mousemove', handleDrag);
-document.body.addEventListener('touchstart', (ev) => {
-	ev.preventDefault();
+document.body.addEventListener('touchstart', (ev) =>
 	startDrag(ev.touches[0])
-});
+);
 document.body.addEventListener('touchend', (ev) => 
 	stopDrag(ev.touches[0])
 );
 document.body.addEventListener('touchcancel', (ev) => 
 	stopDrag(ev.touches[0])
 );
-document.body.addEventListener('touchmove', (ev) => {
-	ev.preventDefault();
+document.body.addEventListener('touchmove', (ev) => 
 	handleDrag(ev.touches[0])
-});
+);
 
 
 // Render logic

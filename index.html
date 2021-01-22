@@ -36,9 +36,43 @@
         cursor: -moz-grabbing;
         cursor: grabbing;
     }
+    .notification {
+      position: absolute;
+      z-index: 10000;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 15px;
+      padding: 10px;
+      min-width: fit-content;
+      background: rgba(255,255,255,0.8);
+      transition: all 0.5s ease-in-out;
+      box-shadow: 2px 2px 10px 2px black;
+    }
   </style>
 </head>
 <body>
+  <script>
+    const notify = document.createElement('div');
+    notify.classList.add('notification');
+    document.body.appendChild(notify);
+    notify.innerHTML = `<center><b>You can drag the screen around with your finger or mouse.<br>Try it! ;)<b></center>`;
+    let timeoutID;
+    const dismiss = () => {
+      notify.style.opacity = '0%';
+      
+      clearTimeout(timeoutID);
+      document.body.removeEventListener('mousedown', dismiss);
+      document.body.removeEventListener('touchstart', dismiss);
+
+      setTimeout(() => {
+        notify.remove();
+      }, 1000);
+    }
+    document.body.addEventListener('mousedown', dismiss);
+    document.body.addEventListener('touchstart', dismiss);
+    timeoutID = setTimeout(dismiss, 10*1000 /* 10 seconds */);
+  </script>
   <script src="./main.js"></script>
   <script>
     // Registering ServiceWorker
