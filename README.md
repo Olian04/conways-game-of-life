@@ -2,4 +2,4 @@
 
 As a rite of passage, everyone eventually implements conway's game of life.
 
-POC: https://jsfiddle.net/olian04/xm6djbw5/359/
+<https://olian04.github.io/conways-game-of-life/>
