@@ -178,12 +178,10 @@ setInterval(update, 500 /* 0.5 second */);
 const spawnShape = (origin, shapeArr, setDirty = true) => {
 	const offsetX = Math.floor(shapeArr[0].length/2);
 	const offsetY = Math.floor(shapeArr.length/2);
-	console.log(offsetX, offsetY);
 	for (let dy = 0; dy < shapeArr.length; dy++) {
   	for (let dx = 0; dx < shapeArr[dy].length; dx++) {
     	const x = dx + origin[0] - offsetX;
     	const y = dy + origin[1] - offsetY;
-      console.log(x,y)
       if (shapeArr[dy][dx] === '#') {
 				game.aliveTiles.set(`${x},${y}`, {x,y});
       }
