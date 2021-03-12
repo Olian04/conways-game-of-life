@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,27 +16,34 @@
       box-sizing: border-box;
     }
 
-    body, document {
+    body,
+    document {
       overflow: hidden;
       overscroll-behavior-x: none;
       overscroll-behavior-y: none;
-	    background: #171717;
+      background: #171717;
     }
 
     canvas {
-        cursor: move; /* fallback: no `url()` support or images disabled */
-        cursor: url(images/grab.cur); /* fallback: Internet Explorer */
-        cursor: -webkit-grab; /* Chrome 1-21, Safari 4+ */
-        cursor: -moz-grab; /* Firefox 1.5-26 */
-        cursor: grab; /* W3C standards syntax, should come least */
+      cursor: move;
+      /* fallback: no `url()` support or images disabled */
+      cursor: url(images/grab.cur);
+      /* fallback: Internet Explorer */
+      cursor: -webkit-grab;
+      /* Chrome 1-21, Safari 4+ */
+      cursor: -moz-grab;
+      /* Firefox 1.5-26 */
+      cursor: grab;
+      /* W3C standards syntax, should come least */
     }
 
     canvas.drag {
-        cursor: url(images/grabbing.cur);
-        cursor: -webkit-grabbing;
-        cursor: -moz-grabbing;
-        cursor: grabbing;
+      cursor: url(images/grabbing.cur);
+      cursor: -webkit-grabbing;
+      cursor: -moz-grabbing;
+      cursor: grabbing;
     }
+
     .notification {
       position: absolute;
       z-index: 10000;
@@ -45,12 +53,13 @@
       border-radius: 15px;
       padding: 10px;
       min-width: fit-content;
-      background: rgba(255,255,255,0.8);
+      background: rgba(255, 255, 255, 0.8);
       transition: all 0.5s ease-in-out;
       box-shadow: 2px 2px 10px 2px black;
     }
   </style>
 </head>
+
 <body>
   <script>
     const notify = document.createElement('div');
@@ -60,7 +69,7 @@
     let timeoutID;
     const dismiss = () => {
       notify.style.opacity = '0%';
-      
+
       clearTimeout(timeoutID);
       document.body.removeEventListener('mousedown', dismiss);
       document.body.removeEventListener('touchstart', dismiss);
@@ -71,22 +80,23 @@
     }
     document.body.addEventListener('mousedown', dismiss);
     document.body.addEventListener('touchstart', dismiss);
-    timeoutID = setTimeout(dismiss, 10*1000 /* 10 seconds */);
+    timeoutID = setTimeout(dismiss, 10 * 1000 /* 10 seconds */);
   </script>
   <script src="./main.js"></script>
   <script>
     // Registering ServiceWorker
-    if ( 'serviceWorker' in navigator ) {
-      navigator.serviceWorker.register( '/circular-waveform-visualizer/sw.js' ).then(function(registration) {
-    
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/circular-waveform-visualizer/sw.js').then(function (registration) {
+
         // Registration was successful
-        console.log( 'ServiceWorker registration successful. Scope: ' + registration.scope )
-      }).catch(function(err) {
-    
+        console.log('ServiceWorker registration successful. Scope: ' + registration.scope)
+      }).catch(function (err) {
+
         // Registration failed with error
-        console.log( 'ServiceWorker registration failed. Error: ' + err);
+        console.log('ServiceWorker registration failed. Error: ' + err);
       });
     }
   </script>
 </body>
+
 </html>
